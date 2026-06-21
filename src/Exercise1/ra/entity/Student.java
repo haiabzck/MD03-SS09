@@ -1,4 +1,4 @@
-package ra.entity;
+package Exercise1.ra.entity;
 
 import java.util.Scanner;
 
@@ -52,19 +52,23 @@ public class Student {
 
     public void inputData(Scanner sc){
         System.out.print("Nhập mã sinh viên :");
-        id =sc.nextLine().trim();
+        this.id =sc.nextLine().toUpperCase().trim();
         System.out.print("Nhập tên sinh viên :");
-        name =sc.nextLine().trim();
+        this.name =sc.nextLine().trim();
         System.out.print("Nhập tuổi sinh viên :");
-        age = Integer.parseInt(sc.nextLine().trim());
+        while (true) {
+            try {
+                this.age = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("Tuổi phải là số nguyên. Nhập lại: ");
+            }
+        }
         System.out.print("Nhập chuyên ngành sinh viên :");
-        specialized =sc.nextLine().trim();
-        Student student = new Student(id,name,age,specialized);
-        System.out.println("Thêm sinh viên thành công !");
-
+        this.specialized =sc.nextLine().trim();
     }
 
     public void displayData(){
-        System.out.println("Mã sinh viên :" + getId() + " ,Tên sinh viên :" + getName() +" ,Tuổi : "+ getAge() + " ,Chuyên ngành :"+getSpecialized());
+        System.out.println("Mã sinh viên : " + getId() + " ,Tên sinh viên : " + getName() +" ,Tuổi : "+ getAge() + " ,Chuyên ngành : "+getSpecialized());
     }
 }
